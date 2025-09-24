@@ -37,7 +37,7 @@ const Analytics = () => {
           labels: grouped.map(item => item.date),
           datasets: [
             {
-              label: "Pull requests Over Time",
+              label: "Number of Pull requests",
               data: grouped.map(item => item.count),
               borderColor: "rgba(138, 3, 249, 1)",
               backgroundColor: "rgba(138, 3, 249, 1)",
@@ -62,7 +62,7 @@ const Analytics = () => {
       <>
       <Flex justify='center' align='center' minH='100vh'>
         <Card.Root textAlign='center' variant='outline' width='1080px' height='540px' p={5}>
-          <Card.Title fontSize='3xl' fontWeight={900} mt={3} mb={3}>Total Pull requests：{pullRequestCount}</Card.Title>
+          <Card.Title fontSize='3xl' fontWeight={900} mt={3} mb={3}>Pull requests Over Time</Card.Title>
           <Box h='100%'>
             <Line
               data={chartData}
