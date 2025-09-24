@@ -1,9 +1,9 @@
-import Statistics from '@/components/Statistics';
+import Analytics from '@/components/Analytics';
 
 const Home = () => {
   return (
     <>
-      <Statistics />
+      <Analytics />
     </>
   );
 };
