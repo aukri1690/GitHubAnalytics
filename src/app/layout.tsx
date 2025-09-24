@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Spotifytics",
-  description: "Spotify Analytics Dashboard",
+  title: "GitHub Analytics Dashboard",
+  description: "GitHub Analytics Dashboard",
 };
 
 export default function RootLayout({
