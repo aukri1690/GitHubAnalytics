@@ -19,7 +19,7 @@ type PRResponse = {
   };
 };
 
-const Statistics = () => {
+const Analytics = () => {
   const [pullRequestCount, setPullRequestCount] = useState<number | null>(null);
   const [chartData, setChartData] = useState<any>(null);
 
@@ -75,7 +75,7 @@ const Statistics = () => {
     );
 };
 
-export default Statistics;
+export default Analytics;
 
 const groupByDate = (prs: PRNode[]) => {
   const counts: Record<string, number> = {};
