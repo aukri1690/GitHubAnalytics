@@ -1,6 +1,10 @@
+import Statistics from '@/components/Statistics';
+
 const Home = () => {
   return (
-    <h1>Hello Spotifytics !</h1>
+    <>
+      <Statistics />
+    </>
   );
 };
 
