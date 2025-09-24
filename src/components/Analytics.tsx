@@ -71,6 +71,14 @@ const Analytics = () => {
           </Box>
         </Card.Root>
       </Flex>
+      <Flex justify='center' align='center' minH='100vh'>
+        <Card.Root textAlign='center' variant='outline' width='250px' height='250px'>
+          <Card.Title fontSize='3xl' fontWeight={900} mt={8} mb={-8}>現在のPR総数</Card.Title>
+          <Flex flex='1' justify='center' align='center'>
+            <Card.Title fontSize='8xl' fontFamily='Impact' color='purple.600'>{pullRequestCount}</Card.Title>
+          </Flex>
+        </Card.Root>
+      </Flex>
       </>
     );
 };
