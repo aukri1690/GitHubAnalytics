@@ -86,7 +86,7 @@ const Analytics = () => {
               data: nodes
                 .filter(n => typeof n.additions === 'number' && typeof n.deletions === 'number')
                 .map(n => ({ x: n.additions, y: n.deletions })),
-              backgroundColor: 'rgba(255, 0, 195, 1)',
+              backgroundColor: 'cyan',
               pointRadius: 5,
               pointHoverRadius: 7
             }
