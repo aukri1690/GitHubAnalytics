@@ -1,4 +1,4 @@
-最終更新：2025年 9月25日 16時08分<br> 
+最終更新：2025年 9月25日 16時27分<br> 
 
 ## 完成品はこちらから⭐️
 以下のURLからアクセスすることができます。<br>
@@ -13,3 +13,4 @@ https://aukri1690-githubanalytics.vercel.app
 - GraphQL 9.0.1
 - Chakra UI 3.27.0
 - Chart.js 4.5.0
+
