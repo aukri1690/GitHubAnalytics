@@ -1,4 +1,4 @@
-最終更新：2025年 9月25日 17時49分<br> 
+最終更新：2025年 9月25日 18時03分<br> 
 
 ## 完成品はこちらから⭐️
 以下のURLからアクセスすることができます。<br>
@@ -15,8 +15,18 @@ GitHub上での活動を可視化する分析ダッシュボードです。
 3. APIを使った開発への関心<br>
 →APIに対する理解を深めることで、開発の幅を広げて技術力向上を目指す。
 
-## サンプル
+## 分析
 ![](https://github.com/user-attachments/assets/61ac9f81-bdd4-4204-8d61-426efd630389)
+
+- Total Pull Requests<br>
+→これまでのPRの合計
+- Pull Requests Over Time<br>
+→日にちごとのPR数の推移を表した折線グラフ
+- Percentage of changed lines<br>
+→ファイルの変更行数における「＋」と「ー」の比率を表した散布図
+- Pull Requests Hourly Distribution<br>
+→PR数を時間帯ごとに分類したヒストグラム
+  
 
 ## 使用技術
 - TypeScript 5.9.2
@@ -24,3 +34,4 @@ GitHub上での活動を可視化する分析ダッシュボードです。
 - GraphQL 9.0.1
 - Chakra UI 3.27.0
 - Chart.js 4.5.0
+
