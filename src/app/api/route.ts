@@ -20,6 +20,8 @@ const GET = async () => {
             totalCount
             nodes {
               createdAt
+              additions
+              deletions
             }
             pageInfo {
               hasNextPage

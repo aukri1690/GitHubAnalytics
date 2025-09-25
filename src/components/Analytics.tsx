@@ -2,11 +2,11 @@
 
 import { useEffect, useState } from 'react';
 import { Box, Card, Flex } from "@chakra-ui/react"
-import { Line, Bar } from "react-chartjs-2";
+import { Line, Bar, Scatter } from "react-chartjs-2";
 import { Chart as ChartJS, LineElement, CategoryScale, LinearScale, PointElement, BarElement, Tooltip, Legend } from "chart.js";
 ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement, BarElement, Tooltip, Legend);
 
-type PRNode = { createdAt: string };
+type PRNode = { createdAt: string; additions: number; deletions: number };
 
 type PRResponse = {
   viewer: {
@@ -41,6 +41,7 @@ const Analytics = () => {
   const [pullRequestCount, setPullRequestCount] = useState<number | null>(null);
   const [pullRequestOverTime, setPullRequestOverTime] = useState<any>(null);
   const [pullRequestHourlyDistribution, setPullRequestHourlyDistribution] = useState<any>(null);
+  const [ changeLinesScatter, setChangeLinesScatter ] = useState<any>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -77,6 +78,20 @@ const Analytics = () => {
             },
           ],
         });
+
+        setChangeLinesScatter({
+          datasets: [
+            {
+              label: 'Additions vs Deletions',
+              data: nodes
+                .filter(n => typeof n.additions === 'number' && typeof n.deletions === 'number')
+                .map(n => ({ x: n.additions, y: n.deletions })),
+              backgroundColor: 'rgba(255, 0, 195, 1)',
+              pointRadius: 5,
+              pointHoverRadius: 7
+            }
+          ]
+        });
       } catch (err) {
         console.error(err);
       }
@@ -85,7 +100,7 @@ const Analytics = () => {
     fetchData();
   }, []);
 
-  return (pullRequestCount === null || pullRequestOverTime === null || pullRequestHourlyDistribution === null) ? (
+  return (pullRequestCount === null || pullRequestOverTime === null || pullRequestHourlyDistribution === null || changeLinesScatter === null) ? (
     <Flex justify='center' align='center' minH='100vh'>
       <div>Now Loading...</div>
     </Flex>
@@ -128,6 +143,37 @@ const Analytics = () => {
                     ticks: { precision: 0 }
                   }
                 },
+              }}
+            />
+          </Box>
+        </Card.Root>
+      </Flex>
+
+      <Flex justify='center' align='center' minH='100vh'>
+        <Card.Root textAlign='center' variant='outline' width='1080px' height='540px' p={5}>
+          <Card.Title fontSize='3xl' fontWeight={900} mt={3} mb={3}>Percentage of changed lines</Card.Title>
+          <Box h='100%'>
+            <Scatter
+              data={changeLinesScatter}
+              options={{
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false }, tooltip: { mode: 'nearest', intersect: false } },
+                scales: {
+                  x: {
+                    type: 'linear',
+                    title: { display: true, text: 'Additions' },
+                    beginAtZero: true,
+                    min: 0,
+                    max: 100,
+                  },
+                  y: {
+                    title: { display: true, text: 'Deletions' },
+                    beginAtZero: true,
+                    min: 0,
+                    max: 50,
+                  }
+                }
               }}
             />
           </Box>
