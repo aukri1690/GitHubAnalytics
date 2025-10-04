@@ -17,11 +17,8 @@ const GET = async () => {
             after: $cursor
             orderBy: { field: CREATED_AT, direction: ASC }
           ) {
-            totalCount
             nodes {
               createdAt
-              additions
-              deletions
             }
             pageInfo {
               hasNextPage
