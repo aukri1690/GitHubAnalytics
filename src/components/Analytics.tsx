@@ -90,9 +90,9 @@ const Analytics = () => {
   ) : (
     <>
       <Flex justify='center' align='center' minH='100vh'>
-        <Flex direction='column'>
-          <Card.Root textAlign='center' variant='outline' width='900px' height='350px' p={5}>
-            <Card.Title fontSize='3xl' fontWeight={900} mt={3} mb={3}>Pull Requests Over Time</Card.Title>
+        <Flex direction='row' gap={8}>
+          <Card.Root textAlign='center' variant='outline' width='700px' height='350px' p={5}>
+            <Card.Title fontSize='3xl' fontWeight={900} mt={3} mb={3}>PR件数の推移</Card.Title>
             <Box h='100%'>
               <Line
                 data={pullRequestOverTime}
@@ -109,8 +109,8 @@ const Analytics = () => {
               />
             </Box>
           </Card.Root>
-          <Card.Root textAlign='center' variant='outline' width='900px' height='350px' p={5}>
-            <Card.Title fontSize='3xl' fontWeight={900} mt={3} mb={3}>Pull Requests Hourly Distribution</Card.Title>
+          <Card.Root textAlign='center' variant='outline' width='700px' height='350px' p={5}>
+            <Card.Title fontSize='3xl' fontWeight={900} mt={3} mb={3}>PR件数の時間帯別分布</Card.Title>
             <Box h='100%'>
               <Bar
                 data={pullRequestHourlyDistribution}
