@@ -39,51 +39,47 @@ const groupByHour = (prs: PRNode[], tz: string) => {
 
 const Analytics = () => {
   const [pullRequestOverTime, setPullRequestOverTime] = useState<any>(null);
-  const [pullRequestHourlyDistribution, setPullRequestHourlyDistribution] = useState<any>(null);
+  const [pullRequestByHour, setPullRequestByHour] = useState<any>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const res = await fetch("/api");
         const data: PRResponse = await res.json();
-
         const nodes = data.viewer.pullRequests.nodes;
-
         const groupedByDate = groupByDate(nodes);
         setPullRequestOverTime({
           labels: groupedByDate.map(item => item.date),
           datasets: [
             {
-              label: 'PR数',
+              label: 'PR件数',
               data: groupedByDate.map(item => item.count),
               borderColor: "rgba(138, 3, 249, 1)",
               fill: false,
             },
           ],
         });
-
         const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
         const { labels, counts } = groupByHour(nodes, tz);
-        setPullRequestHourlyDistribution({
+        setPullRequestByHour({
           labels,
           datasets: [
             {
-              label: 'PR数',
+              label: 'PR件数',
               data: counts,
               borderColor: "rgba(3, 249, 192, 1)",
               borderWidth: 1,
             },
           ],
         });
-      } catch (err) {
-        console.error(err);
+      } catch (error) {
+        console.error('エラーが発生しました', error);
       }
     };
-
     fetchData();
   }, []);
 
-  return (pullRequestOverTime === null || pullRequestHourlyDistribution === null) ? (
+  return (pullRequestOverTime === null || pullRequestByHour === null) ? (
     <Flex justify='center' align='center' minH='100vh'>
       <div>Now Loading...</div>
     </Flex>
@@ -113,7 +109,7 @@ const Analytics = () => {
             <Card.Title fontSize='3xl' fontWeight={900} mt={3} mb={3}>PR件数の時間帯別分布</Card.Title>
             <Box h='100%'>
               <Bar
-                data={pullRequestHourlyDistribution}
+                data={pullRequestByHour}
                 options={{
                   responsive: true,
                   maintainAspectRatio: false,
